@@ -1,0 +1,161 @@
+.popup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.ventana {
+    display: none;
+    width: 400px;
+    height: 380px;
+    border: solid black;
+    padding: 20px;
+}
+
+.popup-content {
+    background-color: #fff;
+    width: 400px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+}
+
+.save-button {
+    display: block;
+}
+
+.ventana1 div {
+    display: flex;
+    flex-direction: column;
+}
+
+.ventana1 {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.Siguiente {
+    width: 100px;
+    margin-top: 10px;
+}
+
+.forc {
+    width: 100%;
+}
+
+.ventana1 input {
+    margin-bottom: 10px;
+}
+
+.ventana2 {
+    flex-direction: column;
+    padding-top: 30px;
+}
+
+.cver {
+    display: flex;
+    flex-direction: column;
+}
+
+.Siguiente2 {
+    width: 100px;
+    margin-top: 10px;
+}
+
+.botons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.camare {
+    background-image: url("/static/core/img/camare.png");
+    width: 145px;
+    height: 140px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.camare:hover{
+    cursor: pointer;
+}
+.imgT{
+    display: none;
+    width: 145px;
+    height: 140px;
+}
+
+.camare video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imgT img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.camera-icon {
+    position: relative;
+    background-color: white;
+    padding: 0 10px 7px 10px;
+    border-radius: 50%;
+    bottom: 50px;
+    left: 50px;
+    font-size: 32px; 
+    opacity: 0.5;
+}
+
+.div-camera {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.ventana3 {
+    flex-direction: column;
+    align-items: center;
+}
+
+.ventana4 {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.save-button {
+    width: 100px;
+}
+
+.video {
+    width: 320px;
+    height: 240px;
+    margin-bottom: 20px;
+}
+
+.boton-video {
+    margin-bottom: 20px;
+}
+.repeat-button{
+    position: relative;
+    left: 75%;
+    bottom: 37px;
+    opacity: 0.5;
+    font-size: 20px;
+}
+.repeat-button:hover{
+    cursor: pointer;
+}

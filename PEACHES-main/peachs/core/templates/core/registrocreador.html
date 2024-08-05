@@ -1,0 +1,84 @@
+{% extends "core/registro.html" %}
+{% load static %}
+{% block csss %}
+<link rel="stylesheet" href="{% static 'core/css/registrocreador.css' %}">{% endblock csss %}
+{% block registroA %}
+<div class="popup-container" id="popup-container1">
+    <div class="popup-content">
+        <div class="ventana ventana1">
+            <div class="forc">
+                <div>
+                    <label for="">Nombres:</label>
+                    <input type="text" id="nombreO">
+                </div>
+                <div>
+                    <label for="">Apellidos:</label>
+                    <input type="text" id="apellidoO">
+                </div>
+                <div>
+                    <label for="">DNI:</label>
+                    <input type="text" id="dniO">
+                </div>
+                <div>
+                    <label for="">Teléfono:</label>
+                    <input type="text" id="telefonoO">
+                </div>
+            </div>
+            <p><input type="checkbox" id="miCheckbox">Se enviará el código de verificación a su correo electrónico. </p>
+            <div>
+                <button id="boton1" class="Siguiente">Siguiente</button>
+            </div>
+        </div>
+        <div class="ventana ventana2">
+            <div class="cver">
+                <label for="">Ingresar código de verificación:</label>
+                <input type="text" id="codigo-input">
+                <p id="codMessage"></p>
+            </div>
+            <div class="cver">
+                <label for="">Ingresar dos imagenes, de perfil y de frente:</label>
+                <div class="div-camera">
+                    <div id="imagenTomada" class="imgT"></div>
+                    <div class="camare" id="perfilCamera"></div>
+                    <div id="imagenTomada2" class="imgT"></div>
+                    <div class="camare" id="frenteCamera"></div>
+                </div>
+            </div>
+            <p><input type="checkbox" id="miCheckbox2" disabled>Al pasar a la siguiente etapa autorizas ser grabado por un tiempo
+                de 15 segundos para verificar tú
+                identidad.</p>
+            <div class="botons">
+                <button id="boton2" class="Siguiente2">Siguiente</button>
+            </div>
+        </div>
+        <div class="ventana ventana3">
+            <img id="video-img" class="video" src="{% static 'core/img/camare-video.jpg' %}" alt="">
+            <video id="videoPreview" class="video" autoplay style="display: none;"></video>
+            <video id="viewrecord" class="video" controls style="display: none;"></video>
+            <div id="countdown"></div>
+            <button class="boton-video" id="startRecording" >Iniciar Grabación</button>
+            <button class="boton-video" id="stopRecording" style="display: none;">Repetir Grabación</button>
+            <button class="Siguiente3" id="grdS3">Guardar</button>
+        </div>
+        <div class="ventana4">
+            <p>Sus datos serán validados y su cuenta será activada en un lapso de 12 horas.</p>
+            <button class="save-button" onclick="activarEnvio()" id="bntnot">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<form method="post" enctype="multipart/form-data"  id="mi_formulario" style="display: none;">
+    {% csrf_token %}
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <input type="text" name="nombre" id="nombreD">
+    <input type="text" name="apellido" id="apellidoD">
+    <input type="text" name="dni" id="dniD">
+    <input type="text" name="telefono" id="telefonoD">
+    <input type="submit" value="Subir video">
+</form>
+<P style="display: none;" id="myParagraph">{{user}}</P>
+{% endblock registroA %}
+{% block script %}
+    <script src="{% static 'core/js/registro.js' %}"></script>
+    <script src="{% static 'core/js/video.js' %}"></script>
+{% endblock script %}

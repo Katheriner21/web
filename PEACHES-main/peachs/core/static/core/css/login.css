@@ -1,0 +1,253 @@
+body {
+  margin: 0;
+  min-width: 400px;
+  height: 100vh;
+}
+
+.contenedor-principal {
+  width: 100%;
+  height: 100vh;
+  min-height: 90vh;
+  background-image: url("/static/core/img/Fondologin.jpg");
+  background-position: center center;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.contenedor-secundario {
+  width: 300px;
+  height: auto;
+  background-color: white;
+  margin: auto 120px;
+}
+
+.formulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  margin-bottom: 20px;
+  height: 25px;
+  width: 100%;
+}
+
+input[type="submit"] {
+  margin-bottom: 20px;
+  height: 22px;
+}
+
+.formulario a {
+  color: black;
+}
+
+.usuario {
+  display: flex;
+  justify-content: center;
+}
+
+.bi {
+  margin-right: 9px;
+  margin-top: 3px;
+}
+
+.contenedor-registro {
+  background-color: #fa934b;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contenedor-registro a {
+  color: black;
+}
+
+.contenedor-registro img {
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
+}
+
+.registro {
+  text-align: center;
+}
+
+.Contenedor-r p {
+  display: none;
+}
+
+.contenedor-secundario p {
+  display: none;
+}
+
+.Contenedor-r {
+  width: 450px;
+  height: auto;
+  background-color: white;
+  position: absolute;
+}
+
+.registro h3 {
+  margin: 0;
+}
+
+.formulario-registro {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 40px;
+  align-items: center;
+}
+
+.formulario-registro input[type="text"],
+input[type="password"],
+input[type="email"] {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.usuario {
+  position: relative;
+}
+.R-pass {
+  position: relative;
+  width: 100%;
+  left: -5px;
+}
+
+#togglePasswordBtn {
+  position: absolute;
+  top: 35%;
+  left: 87%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#countdown {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ff0000; /* Color azul */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+  margin-bottom: 10px;
+}
+
+#togglePasswordBtn2 {
+  position: absolute;
+  top: 35%;
+  left: 94%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.formulario-registro input[type="submit"] {
+  width: 100px;
+}
+
+.formulario-registro select {
+  width: 102%;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.contenedor-registro-s {
+  display: flex;
+  align-items: center;
+}
+
+#cerrar {
+  cursor: pointer;
+}
+
+.error {
+  margin: 30px 30px 0 30px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: 1px solid red;
+  background-color: #ffcccc;
+  color: red;
+  z-index: 9999;
+}
+
+.errorV {
+  margin: 0;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: 1px solid red;
+  background-color: #ffcccc;
+  color: red;
+  z-index: 9999;
+}
+
+.errorS {
+  margin: 0;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: 1px solid green;
+  background-color: #daffcc;
+  color: green;
+  z-index: 9999;
+}
+
+.success {
+  margin: 30px 30px 0 30px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: 1px solid green;
+  background-color: #daffcc;
+  color: green;
+  z-index: 9999;
+}
+
+.error-registro {
+  margin: auto;
+  margin-bottom: 30px;
+}
+.checkmas {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.checkmas p {
+  display: block;
+  text-align: left;
+  margin: 0;
+}
+
+/* Estilos para pantallas más pequeñas que 768px (típicamente teléfonos móviles) */
+@media only screen and (max-width: 1050px) {
+  .contenedor-principal {
+    background-size: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+    .contenedor-secundario {
+      width: 270px;
+      margin: auto;
+    }
+  }
+@media only screen and (max-width:500px){
+    .contenedor-principal{
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .Contenedor-r{
+        width: 350px;
+    }
+}

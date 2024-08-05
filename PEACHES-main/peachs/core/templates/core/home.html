@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEACHES</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'core/img/durazno (1).png' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    {% block style %}{% endblock style %}
+    <link rel="stylesheet" href="{% static 'core/css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/stlyle.css' %}">
+    
+</head>
+
+<body>
+    <div class="contenedor-index">
+        <div class="contenedor-nav">
+            <nav class="btn-pluss-wrapper" id="nav">
+                <div class="btn-pluss">
+                    <ul>
+                        <li><a href="{% url "Inicio" %}">Inicio</a></li>
+                        {% if request.COOKIES.session_token|length == 32 %}
+                            <li><a href="{% url "perfil" %}">Perfil</a></li>
+                        {% else %}
+                            <li><a href="{% url "perfilcontenido" %}">Perfil</a></li>
+                        {% endif %}
+                        <li><a href="{% url "contenido" %}">Contenido</a></li>
+                        <li><a href="{% url "soporte" %}">Soporte Técnico</a></li>
+                        <li><a href="{% url "sobrenosotros" %}">Sobre Nosotros</a></li>
+                        <li><a href="{% url "logout" %}">Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <a href="{% url "Inicio" %}" class="logo">
+                <h2>PEACHES</h2>
+                <img src="{% static 'core/img/durazno (1).png' %}" alt="">
+            </a>
+        </div>
+        {% block contend %}{% endblock contend %}
+    </div>
+    {% block footer %}{% endblock footer %}
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="{% static 'core/js/index.js' %}"></script>
+    {% block script %}{% endblock script %}
+</body>
+
+</html>

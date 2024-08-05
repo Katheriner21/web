@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Iniciar Transmisión</title>
+    <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.20.2.js"></script>
+</head>
+<body>
+    <div id="local-stream" style="width: 480px; height: 320px; background: #000;"></div>
+
+    <script>
+        var appId = "{{ appId }}"; // Reemplaza con tu App ID real
+        var channelName = "{{ channel }}"; // Reemplaza con el nombre de tu canal
+        var token = "{{ token }}"; // Reemplaza con tu token
+
+        let client = AgoraRTC.createClient({ mode: "live", codec: "vp8" });
+
+        async function startBasicCall() {
+            try {
+                client.setClientRole('host');
+                await client.join(appId, channelName, token);
+
+                const [microphoneTrack, cameraTrack] = await AgoraRTC.createMicrophoneAndCameraTracks();
+                
+                // Reproducir el video local
+                cameraTrack.play('local-stream');
+                
+                // Publicar ambos tracks
+                await client.publish([microphoneTrack, cameraTrack]);
+                console.log('Transmisión iniciada con éxito');
+                console.log('Microphone track:', microphoneTrack);
+                console.log('Camera track:', cameraTrack);
+            } catch (error) {
+                console.error('Error al unirse al canal o iniciar la transmisión:', error);
+            }
+        }
+
+        startBasicCall();
+    </script>
+</body>
+</html>

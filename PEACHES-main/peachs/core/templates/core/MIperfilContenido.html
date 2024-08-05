@@ -1,0 +1,281 @@
+{% extends "core/home.html" %}
+{% load static %}
+{% block style %}
+<link href="{% static 'core/css/chat.css' %}" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'core/emoji-picker-1.1.5/lib/css/emoji.css' %}">
+{% endblock style %}
+{% block contend %}
+<style>
+    {% if perfl.imagen_perfil %}
+    .contenedor-perfil {
+        background-image: url("{{perfl.imagen_perfil.url}}");
+    }
+    {% else %}
+    .contenedor-perfil {
+        background-image: url("/static/core/img/OIP.jpeg");
+    }
+    {% endif %}
+    {% if perfl.imagen_portada %}
+    .contenedor-portada {
+        background-image: url("{{perfl.imagen_portada.url}}");
+    }
+    {% else %}
+    .contenedor-portada {
+        background-color: darkgray;
+    }
+    {% endif %}
+</style>
+<div class="contenedor-principal-p">
+    <div class="contenedor-secundario-p">
+        <div class="vizualizacion">
+            <a href="{% url "viewperfil" %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-video3" viewBox="0 0 16 16">
+                    <path d="M14 9.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-6 5.7c0 .8.8.8.8.8h6.4s.8 0 .8-.8-.8-3.2-4-3.2-4 2.4-4 3.2"/>
+                    <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h5.243c.122-.326.295-.668.526-1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v7.81c.353.23.656.496.91.783Q16 12.312 16 12V4a2 2 0 0 0-2-2z"/>
+                </svg>
+                <p>Vizualizar perfil</p>
+            </a>
+        </div>
+        <div class="contenedor-portada">
+            <div class="icono-p icono-portada">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                    class="bi bi-camera-fill" viewBox="0 0 16 16">
+                    <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                    <path
+                        d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0" />
+                </svg>
+            </div>
+            <div class="contenedor-perfil">
+                <div class="icono-p icono-perfil">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-camera-fill" viewBox="0 0 16 16">
+                        <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                        <path
+                            d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="calendario">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                class="bi bi-calendar-date-fill" viewBox="0 0 16 16">
+                <path
+                    d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zm5.402 9.746c.625 0 1.184-.484 1.184-1.18 0-.832-.527-1.23-1.16-1.23-.586 0-1.168.387-1.168 1.21 0 .817.543 1.2 1.144 1.2" />
+                <path
+                    d="M16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-6.664-1.21c-1.11 0-1.656-.767-1.703-1.407h.683c.043.37.387.82 1.051.82.844 0 1.301-.848 1.305-2.164h-.027c-.153.414-.637.79-1.383.79-.852 0-1.676-.61-1.676-1.77 0-1.137.871-1.809 1.797-1.809 1.172 0 1.953.734 1.953 2.668 0 1.805-.742 2.871-2 2.871zm-2.89-5.435v5.332H5.77V8.079h-.012c-.29.156-.883.52-1.258.777V8.16a13 13 0 0 1 1.313-.805h.632z" />
+            </svg>
+            <p>Te uniste a Peaches el {{ perfl.usuario.created|date:"d/m/Y" }}</p>
+        </div>
+        <h2>Información Destacada</h2>
+        <div class="C-p-destacado">
+            <div class="contenedor-mensaje">
+                <div class="chat-container" id="chat-container2">
+                    <div class="icon-chat" id="close-icon-chat2">
+                        <span class="close-icon-chat">&#10006;</span> <!-- Unicode para una "X" -->
+                    </div>
+                    <div class="icon-chat2" id="close-icon-chat3">
+                        <span class="close-icon-chat">&larr;</span> <!-- Unicode para una flecha izquierda -->
+                    </div>
+                    <div class="chat-row">
+                        <div class="chat-col">
+                            <h2 id="userh2"></h2>
+                            <hr>
+                            <div id="boxMessages"></div>
+                    
+                            <div id="chat">
+                                <div class="emoji-picker-container input-chat">
+                                    <input class="form-control" type="text" id="inputMessage" placeholder="Escribe un mensaje..." data-emojiable="true">
+                                </div>
+                                <button class="btn btn-success mt-2" submit id="btnMessage" >Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chats-container" id="chat-container">
+                    <div class="icon-chat" id="close-icon-chat">
+                        <span class="close-icon-chat">&#10006;</span> <!-- Unicode para una "X" -->
+                    </div>
+                    <div class="chat-row">
+                        <div class="chat-col chy-tit">
+                            <h2>Chats</h2>
+                            <hr>
+                            <div id="boxMessagess" class="boxMessage">
+                                {% for perfiles in perfiles %}
+                                    {% for chat in chats %}
+                                        {% if chat.1 == perfiles.usuario %}
+                                            <div class="list-chat" onclick="iniciarChat('{{ user }}', '{{ chat.0 }}', '{{perfiles.usuario.usuario}}')">
+                                                <img src="{% if perfiles.imagen_perfil %}{{perfiles.imagen_perfil.url}}{% else %}{% static '/core/img/OIP.jpeg' %}{% endif %}" alt="">
+                                                <h4>{{perfiles.usuario.usuario}}</h4>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="chat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="60" fill="currentColor"
+                        class="bi bi-chat-left-text" viewBox="0 0 16 16">
+                        <path
+                            d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                        <path
+                            d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
+                    </svg>
+                </div>
+            </div>
+            <div class="Contenedor-destacada">
+                <div class="history-creador">
+                    {% if history.Historia1 %}
+                    <img src="{{history.Historia1.url}}">
+                    {% else %}{% endif %}
+                    <div class="botonmas botonmas1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                            class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="history-creador">
+                    {% if history.Historia2 %}
+                    <img src="{{history.Historia2.url}}">
+                    {% else %}{% endif %}
+                    <div class="botonmas botonmas2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                            class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="history-creador">
+                    {% if history.Historia3 %}
+                    <img src="{{history.Historia3.url}}">
+                    {% else %}{% endif %}
+                    <div class="botonmas botonmas3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                            class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Contenedor-botones">
+            <p>{{sb}} Suscriptores</p>
+            <button>Pagos</button>
+        </div>
+    </div>
+</div>
+<div class="contend-galeria-p">
+    {% for chunk in pub %}
+    <div class="contend-galeria">
+        {% if forloop.first %}
+        <div class="galeria agg-img">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+              </svg>
+              <h3>Nueva</h3>
+        </div>
+        {% endif %}
+        {% for pub in chunk %}
+        <div class="galeria">
+            <a href="{% url "viewpub" pub.3 2 %}">
+                <div class="edit" data-id="{{pub.3}}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+                    </svg>
+                </div>
+                {% if pub.2 %}
+                    <video autoplay muted loop playsinline controlsList="nodownload" oncontextmenu="return false;">
+                        <source src="{{ pub.0.url }}" type="video/mp4">
+                    </video>
+                {% else %}
+                    <img src="{{ pub.0.url }}" alt="" oncontextmenu="return false;">
+                {% endif %}
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+<form id="form" method="post" enctype="multipart/form-data" class="formulario-perfil">
+    {% csrf_token %}
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <input class="input-portada" type="file" id="imagen-portada" name="imagen_portada" accept="image/*">
+    <input class="input-perfil" type="file" id="imagen-perfil" name="imagen_perfil" accept="image/*">
+    <input class="input-historia1" type="file" id="historia1" name="historia1" accept="image/*,video/*">
+    <input class="input-historia2" type="file" id="historia2" name="historia2" accept="image/*,video/*">
+    <input class="input-historia3" type="file" id="historia3" name="historia3" accept="image/*,video/*">
+    <input type="submit" id="submit-btn">
+</form>
+<div class="popup-container cont1" id="popup-container1">
+    <div class="popup-content popup-pub">
+        <span class="close-pub">&#10006;</span> <!-- Unicode para una "X" -->
+        <h2>Crear Publicación</h2>
+        <div id="dropArea">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-bookmark-plus-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5m6.5-11a.5.5 0 0 0-1 0V6H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V7H10a.5.5 0 0 0 0-1H8.5z"/>
+            </svg>
+            <h3>Agregar Fotos/Videos</h3>
+            <p>o arrastre y suelte</p>
+        </div>
+        <input type="file" id="fileInput" class="input-pub" style="display: none;" accept="image/*,video/*">
+        <div class="emoji-picker-container div-input-info">
+            <input type="text" placeholder="Informacion" class="input-info" data-emojiable="true">
+        </div>
+        <input type="submit" value="Publicar" class="save" id="save">
+    </div>
+</div>
+<div class="popup-container cont2" id="cont2">
+    <div class="popup-content popup-pub">
+        <span class="close-pub cls2">&#10006;</span> <!-- Unicode para una "X" -->
+        <h2>Editar Publicación</h2>
+        <div id="dropArea2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-bookmark-plus-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5m6.5-11a.5.5 0 0 0-1 0V6H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V7H10a.5.5 0 0 0 0-1H8.5z"/>
+            </svg>
+            <h3>Agregar Fotos/Videos</h3>
+            <p>o arrastre y suelte</p>
+        </div>
+        <input type="file" id="fileInput2" class="input-pub2" style="display: none;" accept="image/*,video/*">
+        <div class="emoji-picker-container div-input-info">
+            <input type="text" placeholder="Informacion" class="input-info2" data-emojiable="true">
+        </div>
+        <input type="submit" value="Editar" class="editar">
+    </div>
+</div>
+<script>
+    $(function() {
+      window.emojiPicker = new EmojiPicker({
+        emojiable_selector: '[data-emojiable=true]',
+        assetsPath: '{% static "core/emoji-picker-1.1.5/lib/img/" %}',
+        popupButtonClasses: 'fa fa-smile-o'
+      });
+      window.emojiPicker.discover();
+    });
+</script>
+{% block viewPub %}{% endblock viewPub %}
+{% endblock contend %}
+{% block script %}
+<script src="{% static 'core/js/perfil.js' %}"></script>
+<script src="{% static 'core/js/EnviarDatosP.js' %}"></script>
+<script src="{% static 'core/js/chat_perfil.js' %}"></script>
+<script src="{% static 'core/js/chats.js' %}"></script>
+<script src="{% static 'core/js/agg_pub.js' %}"></script>
+<script>
+    setupImageInput('.botonmas1', '.input-historia1');
+    setupImageInput('.botonmas2', '.input-historia2');
+    setupImageInput('.botonmas3', '.input-historia3');
+</script>
+<script type="text/javascript" src="{% static 'core/emoji-picker-1.1.5/lib/js/config.js' %}"></script>
+<script type="text/javascript" src="{% static 'core/emoji-picker-1.1.5/lib/js/util.js' %}"></script>
+<script type="text/javascript" src="{% static 'core/emoji-picker-1.1.5/lib/js/jquery.emojiarea.js' %}"></script>
+<script type="text/javascript" src="{% static 'core/emoji-picker-1.1.5/lib/js/emoji-picker.js' %}"></script>
+{% endblock script %}

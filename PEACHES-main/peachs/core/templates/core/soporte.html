@@ -1,0 +1,41 @@
+{% extends "core/home.html" %}
+{% block contend %}
+{% load static %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="mensaje-soporte">
+        <div id="error-message" class="{{ message.tags }}">{{ message }}</div>
+    </div>
+    {% endfor %}
+{% endif %}
+<div class="container">
+    <form class="form" method="post">
+        {% csrf_token %}
+        <h1>¿En qué podemos ayudarte? </h1>
+        <p>¡Hola! ¿Necesitas ayuda?
+            Estamos aquí para ayudarte con cualquier problema técnico que puedas tener.
+            ¡No dudes en contactarnos para resolver cualquier duda o inconveniente que tengas!</p>
+
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" class="box">
+
+        <label for="correo">Correo Electronico</label>
+        <input type="correo" id="correo" name="correo" class="box">
+
+        <label for="asunto">Asunto</label>
+        <input type="asunto" id="asunto" name="asunto" class="box">
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" cols="30" rows="10" style="border: 0.5px solid;"></textarea>
+
+        <input type="submit" value="Enviar" class="submit">
+    </form>
+
+    <div class="icono">
+        <img src="{% static 'core/img/img.png' %}" class="img-1" alt="">
+
+
+    </div>
+</div>
+{% endblock contend %}
+{% block script %}<script src="{% static 'core/js/soporte.js' %}"></script>{% endblock script %}

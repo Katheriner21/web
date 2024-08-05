@@ -1,0 +1,103 @@
+{% extends "core/home.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+{% endblock style %}
+{% block contend %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="mensaje-soporte">
+        <div id="error-message" class="{{ message.tags }}">{{ message }}</div>
+    </div>
+    {% endfor %}
+{% endif %}
+{% for n in n %}
+    <div class="contenidos">
+        <h1>Sobre Nosotros</h1>
+        <p>En 2024, Peach fue fundada por tres jóvenes
+            con el objetivo de crear oportunidades laborales significativas para las personas.</p>
+    </div>
+    
+    <div class="opinion">
+        <div class="textos">
+            <h2> Generamos Oportunidades</h2>
+            <h3>¡Bienvenido a Peach!</h3>
+            <p>{{n.oportunidad}}</p>
+            <div class="centrado p"> 
+               <p> ¡Gracias por ser parte de nuestra comunidad!</p>
+            </div>
+         </div>
+        <img class="imagen" src="{% static 'core/img/usuario.png' %}" alt="logo"> 
+    </div>
+
+    <div class="containers">
+        <div class="boxs">
+            <form class="nosotros" method="post">
+                {% csrf_token %}
+                <h2>Contactanos </h2>
+            
+                <label for="name" >Nombre:</label><br>
+                <input type="text" id="name" name="name"><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"><br>
+
+                <label for="message">Mensaje:</label><br>
+                <textarea id="mensaje" name="msj"></textarea>
+                <input type="submit" value="Enviar mensaje">
+            </form>
+        </div>
+        <div class="boxs">
+            <h2>  Política de Privacidad </h2>
+            <p>{{n.politicas|linebreaksbr}}</p>
+        </div>
+        <div class="boxs">
+            <h2>Misión</h2>
+            <p>{{n.mision|linebreaksbr}}</p> 
+            <img class="imagenlg" src="{% static 'core/img/durazno.png' %}" alt="logo"> 
+        </div>
+    </div>
+{% endfor %}                  
+    <div class="opinions">
+        <div class="mensaje-contacto">
+            <div id="error-messages" class="{{ message.tags }}">{{ message }}</div>
+        </div>
+        <h2 class="titulo">Opinión</h2>
+        <div class="opiniones">
+            {% for o in op %}
+            <div>
+                <div class="cont-op">
+                    <div class="fotousuario">
+                        <a href="{% if o.3 == "Usuario" %}{% url "Perfil" o.2 %}{% else %}{% url "Perfilcontenido" o.2 %}{% endif %}">
+                            <img src="{% if o.0 %}{{ o.0.url }}{% else %}{% static '/core/img/OIP.jpeg' %}{% endif %}" alt="foto del usuario">
+                        </a>
+                    </div>
+                    <div class="ejemplotexto">
+                        <p>{{o.1}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="botonopinion">Generar Opinión</button>
+    </div>
+    <div class="popup-container">
+        <div class="popup-conten">
+            <span class="close-ico">&#10006;</span> <!-- Unicode para una "X" -->
+            <div class="poput-label">
+                <label for="">Ingrese su opinion:</label>
+            </div>
+            <textarea class="edit-textarea" id="edit-textarea1"></textarea>
+            <button class="save-butto" id="save-button1">Guardar</button>
+        </div>
+    </div>
+{% endblock contend %}
+{% block footer %}
+<footer>
+    <span class="derechos-reservados">Derechos Reservados Peach, 2024. </span>
+</footer>
+{% endblock footer %}
+{% block script %}
+<script src="{% static 'core/js/soporte.js' %}"></script>
+<script src="{% static 'core/js/slide.js' %}"></script>
+{% endblock script %}

@@ -1,0 +1,38 @@
+{% extends "core/contenido.html" %}
+{% block viewHistory %}
+<div class="View-History">
+    <a href="{% url "agg_view" usuario %}" class="close-carousel">
+        <span class="close-icon">&#10006;</span> <!-- Unicode para una "X" -->
+    </a>
+    <div id="carousel1" class="carousel slide cont-view-history" data-ride="carousel">
+        <a class="carousel-control-prev carusel" href="#carousel1" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <div class="carousel-inner cont-view-history">
+            {% for userH in userH %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <div class="row cont-view-history">
+                    <div class="col cont-view-history history-flex">
+                        <div class="view-histoy-img">
+                            {% if userH.1 %}
+                                <video autoplay muted loop playsinline controlsList="nodownload" controls oncontextmenu="return false;">
+                                    <source src="{{ userH.0.url }}" type="video/mp4">
+                                </video>
+                            {% else %}
+                                <img src="{{ userH.0.url }}" alt="" oncontextmenu="return false;">
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <a class="carousel-control-next carusel" href="#carousel1" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true" ></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+{% endblock viewHistory %}

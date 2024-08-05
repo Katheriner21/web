@@ -1,0 +1,17 @@
+<!-- templates/streaming_app/lista_transmisiones.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Transmisiones</title>
+</head>
+<body>
+    <h1>Lista de Transmisiones</h1>
+    <ul>
+        {% for transmision in transmisiones %}
+            <li><a href="{% url 'ver_transmision' transmision.id %}">{{ transmision.titulo }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

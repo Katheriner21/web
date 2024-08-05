@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/pago.css' %}">
+    <title>PayPal JS SDK Standard Integration</title>
+  </head>
+  <body>
+
+    <div id="paypal-button-container"></div>
+    <p id="result-message"></p>
+    <!-- Replace the "test" client-id value with your client-id -->
+    <script> 
+        var user = '{{user}}';
+        console.log(user);
+    </script>
+    <script src="https://www.paypal.com/sdk/js?client-id=ASTCe-PZ7FoSIOhAC75G1tBJAvQp3Dz7LplGUhrsYpTvj-pMa1aKCGA7JqEbVOpB1h5SnTpSbdxnuXrl" data-sdk-integration-source="integrationbuilder_sc"></script>
+    <script src="{% static 'core/js/paypal.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Espectador de Streaming</title>
+</head>
+<body>
+    <div id="remote-stream-container">
+        <video id="remote-stream" autoplay playsinline style="width: 480px; height: 320px; background: #000;"></video>
+    </div>
+
+    <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.20.2.js"></script>
+    <script>
+        var appId = "{{ appId }}"; // Reemplaza con tu App ID real
+        var channelName = "{{ channel }}"; // Reemplaza con el nombre de tu canal
+        var token = "{{ token }}"; // Reemplaza con tu token
+
+        let client = AgoraRTC.createClient({ mode: "live", codec: "vp8" });
+
+        async function startViewer() {
+            try {
+                client.setClientRole("audience");
+                await client.join(appId, channelName, token);
+
+                // Escucha los eventos de llegada de nuevos streams remotos
+                client.on("user-published", async (user, mediaType) => {
+                    await client.subscribe(user, mediaType);
+                    console.log("Nuevo stream remoto agregado");
+
+                    if (mediaType === 'video') {
+                        const remoteVideoTrack = user.videoTrack;
+                        remoteVideoTrack.play('remote-stream');
+                    }
+
+                    if (mediaType === 'audio') {
+                        const remoteAudioTrack = user.audioTrack;
+                        remoteAudioTrack.play();
+                    }
+                });
+
+                console.log('Espectador unido al canal con éxito');
+            } catch (error) {
+                console.error('Error joining the channel:', error);
+            }
+        }
+
+        startViewer();
+    </script>
+</body>
+</html>

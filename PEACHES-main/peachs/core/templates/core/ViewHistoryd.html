@@ -1,0 +1,21 @@
+{% extends "core/perfilContenido.html" %}
+{% block viewHistoryd %}
+<div class="View-History">
+    <a href="{% url "agg_viewd" usuario id %}" class="close-carousel">
+        <span class="close-icon">&#10006;</span> <!-- Unicode para una "X" -->
+    </a>
+    <div class="cont-view-historyd">
+        <div class="view-histoy-img">
+            {% for img in img %}
+                {% if img.1 %}
+                    <video autoplay muted loop playsinline controlsList="nodownload" controls oncontextmenu="return false;">
+                        <source src="{{ img.0.url }}" type="video/mp4">
+                    </video>
+                {% else %}
+                    <img src="{{ img.0.url }}" alt="" oncontextmenu="return false;">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock viewHistoryd %}

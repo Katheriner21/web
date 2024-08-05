@@ -1,0 +1,60 @@
+{% extends "core/base.html" %}
+{% block style %}justify-content: center;{% endblock style %}
+{% block css %}{% block csss %}{% endblock csss %}{% endblock css %}
+{% block registro %}
+{% load static %}
+<div class="Contenedor-r">
+    <div class="contenedor-registro">
+        <div class="contenedor-registro-s">
+            <h2>PEACHES</h2>
+            <img src="{% static 'core/img/durazno (1).png' %}" alt="">
+        </div>
+        <a href="{% url "login" %}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z" />
+            </svg>
+        </a>
+    </div>
+    <div class="registro">
+        <h3>REGISTRO</h3>
+        <form action="" class="formulario-registro" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <input type="text" placeholder="Usuario" name="user">
+            <input type="email" placeholder="E-mail" name="e-mail" id="email">
+            <p id="emailMessage"></p>
+            <div class="R-pass">
+                <input type="password" placeholder="Contraseña" name="contraseña" id="password">
+                <button id="togglePasswordBtn2" type="button"><i class="bi bi-eye-fill"></i></button>
+            </div>
+            <p id="passwordMessage"></p>
+            <select name="sexo">
+                <option value="" disabled selected hidden>Seleccionar sexo</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Prefiero no especificar">Prefiero no especificar</option>
+            </select>
+            <select name="Tipo_Usuario">
+                <option disabled selected hidden>Seleccionar tipo de cuenta</option>
+                <option value="Usuario">Usuario</option>
+                <option value="creador_contenido">Usuario creador de contenido</option>
+            </select>
+            <input type="text" placeholder="Fecha de nacimiento" name="cumpleaños" id="fecha">
+            <div class="checkmas">
+                <input type="checkbox" id="check" disabled>
+                <p>"Por favor tenga en cuenta que es posible que encuentre contenido para mayores de 18 años."</p>
+            </div>
+            <input type="submit" value="Guardar" name="registro-submit" id="submitBtn" disabled>
+            {% if messages %}
+                {% for message in messages %}
+                <div id="error-message" class="{{ message.tags }} error-registro">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% block registroA %}{% endblock registroA %}
+{% endblock registro %}
+{% block script %}<script src="{% static 'core/js/validar.js' %}"></script>{% endblock script %}

@@ -1,0 +1,27 @@
+{% extends "core/MIperfilContenido.html" %}
+{% block viewPub %}
+<div class="View-History">
+    <a href="{% url "Perfilcontenido" user %}" class="close-carousel">
+        <span class="close-icon">&#10006;</span> <!-- Unicode para una "X" -->
+    </a>
+    <div class="cont-view-historyd">
+        <div class="view-histoy-img">
+            {% for pubs in pubs %}
+                {% if pubs.2 %}
+                    <video autoplay muted loop playsinline controlsList="nodownload" controls oncontextmenu="return false;">
+                        <source src="{{ pubs.0.url }}" type="video/mp4">
+                    </video>
+                    <div class="view-p">
+                        {{pubs.1}}
+                    </div>
+                {% else %}
+                    <img src="{{ pubs.0.url }}" alt="" oncontextmenu="return false;">
+                    <div class="view-p">
+                        {{pubs.1}}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock viewPub %}

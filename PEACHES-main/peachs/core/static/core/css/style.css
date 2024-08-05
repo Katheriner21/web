@@ -1,0 +1,329 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.contenidos {
+    display: flex;
+    background-color: #f3f3f3;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    height: 130px;
+    margin-bottom: 50px;
+}
+
+.contenidos h1 {
+    font-size: 2.3rem;
+    margin: 10px 0;
+}
+
+.contenidos p {
+    font-size: 18px;
+}
+
+.nosotros h1 {
+    font-size: 2.3rem;
+    margin: 10px 0;
+}
+
+.nosotros p {
+    font-size: 18px;
+}
+
+.opinion {
+    position: relative;
+    display: flex;
+    background-color: #f3f3f3;
+    width: 70%;
+    height: auto;
+    max-width: 790px;
+    margin: auto;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.opinion h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.opinion h3 {
+    display: flex;
+    font-size: 1.5rem;
+    margin: 15px 0;
+}
+
+.opinion p {
+    display: flex;
+    font-size: 18px;
+    padding-left: 10;
+}
+
+.centrado p {
+    justify-content: center;
+    font-weight: 800;
+}
+
+.imagen {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    left: 790px;
+}
+
+.containers {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    transition: all 1s ease;
+}
+
+.boxs {
+    background-color: rgba(250, 158, 92, 0.5);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 380px;
+}
+
+.boxs h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.boxs p {
+    text-align: justify;
+    font-size: 18px;
+}
+
+.boxs form {
+    text-align: left;
+}
+
+.boxs label {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.boxs input[type="text"],
+.boxs input[type="email"],
+.boxs textarea {
+    width: 340px;
+    height: 35px;
+    margin-bottom: 10px;
+    border: 0.5px solid black;
+}
+
+.boxs textarea {
+    resize: vertical;
+    height: 120px;
+}
+
+.boxs button {
+    margin-top: 10px;
+}
+
+.boxs input[type="submit"] {
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: #fa9e5c;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    position: relative;
+    left: 100px;
+}
+
+.boxs a:hover {
+    background-color: #fcaf78;
+}
+
+.imagenlg {
+    position: relative;
+    width: 60px;
+    left: 290px;
+}
+
+.opinions {
+    margin-top: 50px;
+    background-color: #f3f3f3;
+    height: auto;
+    padding: 20px;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+}
+
+.opiniones {
+    text-align: justify;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.cont-op{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    height: 120px;
+}
+
+.fotousuario {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+}
+
+.fotousuario img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ejemplotexto {
+    background-color: #fcaf78;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 10px;
+    max-width: 330px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    max-height: 110px;
+    overflow-y: auto;
+}
+
+.botonopinion {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #fa9e5c;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botonopinion:hover {
+    background-color: #fcaf78;
+}
+
+footer{
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    background-color: #fa9e5c;
+    color: rgb(0, 0, 0);
+}
+
+.error {
+    display: none;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid red;
+    background-color: #ffcccc;
+    color: red;
+    z-index: 9999;
+}
+.success {
+    display: none;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid green;
+    background-color: #daffcc;
+    color: green;
+    z-index: 9999;
+}
+.mensaje-contacto{
+    display: flex;
+    justify-content: center;
+}
+
+#error-message{
+    margin: 20px;
+}
+#error-messages{
+    display: none;
+    width: auto;
+}
+#error-messages p{
+    margin: 0;
+}
+
+.popup-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.popup-conten{
+    background-color: #fff;
+    width: 400px;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-height: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding: 40px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.save-butto{
+    padding: 5px;
+    cursor: pointer;
+}
+.poput-label{
+    width: 100%;
+}
+.poput-label label{
+    font-weight: 500;
+}
+.close-ico{
+    position: absolute;
+    top: 10px;
+    left: 91%;
+    cursor: pointer;
+}
+
+@media only screen and (max-width:500px) {
+    .containers{
+        flex-direction: column;
+    }
+    .boxs{
+        margin-bottom: 20px;
+    }
+    .opinion{
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+    }
+    .contenidos{
+        flex-wrap: nowrap;
+        padding: 10px;
+        height: auto;
+    }
+    .imagen{
+        position: static;
+        transform: none; 
+        left: auto; 
+    }
+}
